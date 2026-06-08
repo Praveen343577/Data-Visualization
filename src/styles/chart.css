@@ -8,9 +8,9 @@
   --shadow-glass: rgba(0, 0, 0, 0.37);
 
   /* Indicator Colors */
-  --color-active: #8b5cf6;
-  --color-inactive: #f59e0b;
-  --color-nogps: #94a3b8;
+  --color-active: #22c55e;
+  --color-inactive: #ef4444;
+  --color-nogps: #eab308;
 }
 
 .chart-wrapper {
