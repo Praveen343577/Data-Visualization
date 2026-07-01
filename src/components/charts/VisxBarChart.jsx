@@ -34,7 +34,7 @@ export const VisxBarChart = ({ width, height, data, showTooltip, hideTooltip }) 
     const x1 = scaleBand({
       domain: keys,
       range: [0, x0.bandwidth()],
-      padding: 0.08,
+      padding: 0.3,
     });
 
     const y = scaleLinear({
@@ -63,21 +63,26 @@ export const VisxBarChart = ({ width, height, data, showTooltip, hideTooltip }) 
       <defs>
         <linearGradient id="grad-active" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#4ade80" />
-          <stop offset="100%" stopColor="#16a34a" />
+          <stop offset="50%" stopColor="#22c55e" />
+          <stop offset="100%" stopColor="#052e16" />
         </linearGradient>
         <linearGradient id="grad-inactive" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#f87171" />
-          <stop offset="100%" stopColor="#dc2626" />
+          <stop offset="50%" stopColor="#dc2626" />
+          <stop offset="100%" stopColor="#1c0606" />
         </linearGradient>
         <linearGradient id="grad-nogps" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#fde047" />
-          <stop offset="100%" stopColor="#ca8a04" />
+          <stop offset="50%" stopColor="#ca8a04" />
+          <stop offset="70%" stopColor="#1a1502" />
+          <stop offset="90%" stopColor="#000000" />
+          <stop offset="100%" stopColor="#000000" />
         </linearGradient>
         <filter id="depth-shadow" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000000" floodOpacity="0.35" />
         </filter>
         <pattern id="stripes" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="3" height="6" fill="rgba(255,255,255,0.12)" />
+          <rect width="3" height="6" fill="rgba(255,255,255,0.05)" />
         </pattern>
       </defs>
 
@@ -170,7 +175,7 @@ export const VisxBarChart = ({ width, height, data, showTooltip, hideTooltip }) 
                       height={barHeight + radius}
                       rx={radius}
                       ry={radius}
-                      fill={COLORS[key]}
+                      fill={key === 'active' ? 'url(#grad-active)' : key === 'inactive' ? 'url(#grad-inactive)' : 'url(#grad-nogps)'}
                       filter="url(#depth-shadow)"
                       clipPath={`url(#clip-${d.platform}-${key})`}
                       className="visx-bar-element"
